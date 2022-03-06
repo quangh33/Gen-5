@@ -3,10 +3,10 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    const dict = {}
+    const frequency = {}
     return nums.some(num => {
-        if (!dict[num]) {
-            dict[num] = 1
+        if (!frequency[num]) {
+            frequency[num] = 1
             return false
         } else {
             return true
