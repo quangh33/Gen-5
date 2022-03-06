@@ -5,25 +5,12 @@ import java.util.Map;
 
 class Solution {
     public static boolean containsDuplicate(int[] nums) {
-        Map<Integer, Integer> occ = new HashMap<>();
-        int length = nums.length;
-        int mid = length/2;
-        for (int i = 0; i < mid; i++) {
-            if(occ.get(nums[i]) == null){
-                occ.put(nums[i], 1);
-            }else return true;
-
-            if(occ.get(nums[length - i - 1]) == null){
-                occ.put(nums[length - i - 1], 1);
-            }else return true;
+        Map<Integer, Integer> occurences = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(occurences.get(nums[i]) != null) return true;
+            occurences.put(nums[i], 1);
         }
-
-        if(mid * 2 < length){
-            return occ.get(nums[mid]) != null;
-        }
-
         return false;
-        
     }
 
     public static void main(String[] args) {
