@@ -3,6 +3,11 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    let arr = Array.from(new Set(nums))
-    return arr.length != nums.length
+    let duplicateObj = {}
+    for(let i=0;i<nums.length;i++) {
+        if(duplicateObj.hasOwnProperty(nums[i]))
+            return true;
+        duplicateObj[nums[i]] = 1;
+    }
+    return false
 };
