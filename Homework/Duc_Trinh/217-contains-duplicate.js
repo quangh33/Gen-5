@@ -4,18 +4,12 @@
  */
  var containsDuplicate = function(nums) {
     const hashmap = {}
-    let res = false
     for (let i = 0; i < nums.length; i++) {
         if (hashmap[nums[i]]) {
-            hashmap[nums[i]] = hashmap[nums[i]] + 1
+            return true
         } else {
-            hashmap[nums[i]] = 1
+            hashmap[nums[i]] = true
         }
     }
-    Object.keys(hashmap).forEach((key) => {
-        if (hashmap[key] > 1) {
-            res = true
-        }
-    })
-    return res
+    return false
 };
