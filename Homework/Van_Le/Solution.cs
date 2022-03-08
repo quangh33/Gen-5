@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 
-namespace ContainDuplicate
+namespace ContainsCode
 {
-    public static class Duplicate
+    public static class Solution
     {
         public static bool ContainsDuplicate(int[] nums)
         {
-            Dictionary<int, int> myMap = new Dictionary<int, int> ();
+            Dictionary<int, int> hashmap = new Dictionary<int, int>();
             for (int i = 0; i < nums.Length; i++)
             {
-                if (myMap.ContainsKey(nums[i]))
+                if (hashmap.ContainsKey(nums[i]))
                 {
                     return true;
                 }
-                myMap[nums[i]] = i;
+                hashmap[nums[i]] = i;
             }
             return false;
         }
