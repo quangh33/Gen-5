@@ -3,9 +3,9 @@
  * @return {boolean}
  */
  var containsDuplicate = function(nums) {
-    let temp = new Set()
+    let checkDuplicateSet = new Set()
     for (let i of nums) {
-        if (!temp.has(i)) temp.add(i);
+        if (!checkDuplicateSet.has(i)) checkDuplicateSet.add(i);
         else return true;
     }
     return false;
