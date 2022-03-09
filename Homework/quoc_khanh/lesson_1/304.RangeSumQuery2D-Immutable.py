@@ -15,6 +15,7 @@ class NumMatrix:
         self.rows = len(matrix)
         self.cols = len(matrix[0])
         self.matrix = matrix
+        # prefixSums[i][j] = sum of all matrix[x][y] with 0 <= x <= i and 0 <= y <= j
         self.prefixSums = [[0] * self.cols for row in range(self.rows)]
         self.calculatePrefixSum()
         
