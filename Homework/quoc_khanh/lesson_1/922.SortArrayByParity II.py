@@ -17,20 +17,20 @@ class Solution:
             2 1 4 6 8 9 2 3
                   |
         '''
-        evenPointer = 0
-        oddPointer = 1
-        pointer = 0
+        evenIdx = 0
+        oddIdx = 1
+        currIdx = 0
         length = len(nums)
-        while pointer < length:
-            currentVal = nums[pointer]
-            if self.isEven(currentVal) and self.isOdd(pointer):
-                self.swap(nums, evenPointer, pointer)
-                evenPointer += 2
-            elif self.isOdd(currentVal) and self.isEven(pointer):
-                self.swap(nums, oddPointer, pointer)
-                oddPointer += 2
+        while currIdx < length:
+            currVal = nums[currIdx]
+            if self.isEven(currVal) and self.isOdd(currIdx):
+                self.swap(nums, evenIdx, currIdx)
+                evenIdx += 2
+            elif self.isOdd(currVal) and self.isEven(currIdx):
+                self.swap(nums, oddIdx, currIdx)
+                oddIdx += 2
             else:
-                pointer += 1
+                currIdx += 1
         return nums
 
 s = Solution()
