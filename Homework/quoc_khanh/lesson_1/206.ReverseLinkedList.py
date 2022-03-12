@@ -15,12 +15,6 @@ class Solution:
         return self.reverseInRecursion(curr, next)
     
     def reverse(self, head: ListNode) -> ListNode:
-        '''
-            h
-            1   2   3 > 4
-            n
-                |   |
-        '''
         if head.next == None:
             return head
         newHead = head
@@ -36,4 +30,5 @@ class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head == None:
             return None
-        return self.reverseInRecursiov(None, head)
+        # return self.reverseInRecursiov(None, head)
+        return self.reverse(head)
