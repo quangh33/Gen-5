@@ -1,3 +1,4 @@
+class SortColors {
     public void sortColors(int[] nums) {
         int size = nums.length;
         int position = 0;
@@ -25,3 +26,4 @@
             }
         }
     }
+}
