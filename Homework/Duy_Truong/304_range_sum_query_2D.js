@@ -2,9 +2,16 @@
  * @param {number[][]} matrix
  */
 var NumMatrix = function(matrix) {
-    this.numMatrix = [];
-    for(let i=0;i<matrix.length;i++) {
-        this.numMatrix.push(matrix[i])
+    if(matrix.length == 0 || matrix[0].length == 0) return;
+    this.dp = new Array(matrix.length + 1);
+    for(let i=0;i<this.dp.length;i++) {
+        this.dp[i] = new Array(matrix[0].length + 1).fill(0);
+    }
+    for(let i=1;i<this.dp.length;i++) {
+        for(let j=1;j<this.dp[0].length;j++) {
+            this.dp[i][j] = matrix[i-1][j-1] + this.dp[i-1][j]
+            + this.dp[i][j-1] - this.dp[i-1][j-1];
+        }
     }
 };
 
@@ -16,21 +23,7 @@ var NumMatrix = function(matrix) {
  * @return {number}
  */
 NumMatrix.prototype.sumRegion = function(row1, col1, row2, col2) {
-    if(row1 > row2) {
-        let rowTemp = row1;
-        row1 = row2;
-        row2 = temp;
-        let colTemp = col1;
-        col1 = col2;
-        col2 = colTemp;
-    }
-    let sum = 0;
-    for(let i=row1;i<=row2;i++) {
-        for(let j=col1;j<=col2;j++) {
-            sum += this.numMatrix[i][j]
-        }
-    }
-    return sum;
+    return this.dp[row2+1][col2+1] + this.dp[row1][col1] - this.dp[row2+1][col1] - this.dp[row1][col2+1];
 };
 
 /** 
