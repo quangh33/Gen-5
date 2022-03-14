@@ -3,6 +3,7 @@ package lession01;
 /**
  * @author taivt
  * @since 2022/03/13 23:16:24
+ * @link https://leetcode.com/problems/single-number/
  */
 public class TaiVo136SingleNumber {
     public static void main(String[] args) {

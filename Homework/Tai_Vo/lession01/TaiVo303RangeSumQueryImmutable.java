@@ -3,6 +3,7 @@ package lession01;
 /**
  * @author taivt
  * @since 2022/03/14 20:54:33
+ * @link https://leetcode.com/problems/range-sum-query-immutable/
  */
 public class TaiVo303RangeSumQueryImmutable {
 
@@ -26,6 +27,8 @@ public class TaiVo303RangeSumQueryImmutable {
         }
 
         public int sumRange(int left, int right) {
+            // Space Complexity: O(n)
+            // Time Complexity: O(1)
             if (left == 0) {
                 return prefixSum[right];
             }
