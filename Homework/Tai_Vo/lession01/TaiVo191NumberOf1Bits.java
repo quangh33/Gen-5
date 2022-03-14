@@ -2,8 +2,8 @@ package lession01;
 
 /**
  * @author taivt
- * @since 2022/03/14 20:37:19
  * @link https://leetcode.com/problems/number-of-1-bits/
+ * @since 2022/03/14 20:37:19
  */
 public class TaiVo191NumberOf1Bits {
     public static void main(String[] args) {

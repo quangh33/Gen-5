@@ -2,8 +2,8 @@ package lession01;
 
 /**
  * @author taivt
- * @since 2022/03/13 23:40:23
  * @link https://leetcode.com/problems/power-of-two/
+ * @since 2022/03/13 23:40:23
  */
 public class TaiVo231PowerOfTwo {
     public static void main(String[] args) {

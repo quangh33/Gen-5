@@ -2,8 +2,8 @@ package lession01;
 
 /**
  * @author taivt
- * @since 2022/03/14 20:54:33
  * @link https://leetcode.com/problems/range-sum-query-immutable/
+ * @since 2022/03/14 20:54:33
  */
 public class TaiVo303RangeSumQueryImmutable {
 
