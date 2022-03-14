@@ -7,15 +7,17 @@ package lession01;
 public class TaiVo136SingleNumber {
     public static void main(String[] args) {
         int[] nums = new int[]{4, 1, 2, 1, 2};
-        int singleNum = new TaiVo136SingleNumber().singleNumber(nums);
+        int singleNum = new Solution().singleNumber(nums);
         System.out.println(singleNum);
     }
 
-    public int singleNumber(int[] nums) {
-        int singleNum = 0;
-        for (int num : nums) {
-            singleNum ^= num;
+    private static class Solution {
+        public int singleNumber(int[] nums) {
+            int singleNum = 0;
+            for (int num : nums) {
+                singleNum ^= num;
+            }
+            return singleNum;
         }
-        return singleNum;
     }
 }
