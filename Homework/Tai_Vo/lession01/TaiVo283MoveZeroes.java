@@ -23,7 +23,7 @@ public class TaiVo283MoveZeroes {
 
     private static class Solution {
         public void moveZeroes(int[] nums) {
-            // Space Complexity : O(1)
+            // Space Complexity: O(1)
             // Time Complexity: O(n)
             int cur = 0;
             int nextNonZeroIdx = 1;

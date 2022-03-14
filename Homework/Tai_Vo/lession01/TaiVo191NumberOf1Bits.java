@@ -16,7 +16,7 @@ public class TaiVo191NumberOf1Bits {
 
     private static class Solution {
         public int hammingWeight(int n) {
-            // Space Complexity : O(1)
+            // Space Complexity: O(1)
             // Time Complexity: O(1)
             int count = 0;
             for (int i = 0; i < 32; i++) {

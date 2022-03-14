@@ -16,7 +16,7 @@ public class TaiVo231PowerOfTwo {
 
     private static class Solution {
         public boolean isPowerOfTwo(int n) {
-            // Space Complexity : O(1)
+            // Space Complexity: O(1)
             // Time Complexity: O(1)
             if (n <= 0) {
                 return false;
