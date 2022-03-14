@@ -9,11 +9,11 @@ import java.util.Arrays;
  */
 public class TaiVo922SortArrayByParityII {
     public static void main(String[] args) {
-//        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{4, 2, 5, 7})));
-//        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{2, 3})));
-//        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{3, 4, 6, 8, 5, 7})));
-//        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{3, 5, 2, 4, 6, 7})));
-//        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{1, 2, 3, 4, 5, 6})));
+        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{4, 2, 5, 7})));
+        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{2, 3})));
+        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{3, 4, 6, 8, 5, 7})));
+        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{3, 5, 2, 4, 6, 7})));
+        System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{1, 2, 3, 4, 5, 6})));
         System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{648, 831, 560, 986, 192, 424, 997, 829, 897, 843})));
     }
 
