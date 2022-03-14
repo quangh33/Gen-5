@@ -23,23 +23,24 @@ public class TaiVo283MoveZeroes {
 
     private static class Solution {
         public void moveZeroes(int[] nums) {
-            int slowIdx = 0;
-            int fastIdx = 1;
+            // Space Complexity : O(1)
+            // Time Complexity: O(n)
+            int cur = 0;
+            int nextNonZeroIdx = 1;
 
-            while (fastIdx < nums.length && slowIdx < nums.length) {
-                if (nums[slowIdx] == 0) {
-                    while (fastIdx < nums.length) {
-                        if (nums[fastIdx] != 0) {
-                            int temp = nums[slowIdx];
-                            nums[slowIdx] = nums[fastIdx];
-                            nums[fastIdx] = temp;
+            while (nextNonZeroIdx < nums.length && cur < nums.length) {
+                if (nums[cur] == 0) {
+                    while (nextNonZeroIdx < nums.length) {
+                        if (nums[nextNonZeroIdx] != 0) {
+                            nums[cur] = nums[nextNonZeroIdx];
+                            nums[nextNonZeroIdx] = 0;
                             break;
                         }
-                        fastIdx++;
+                        nextNonZeroIdx++;
                     }
                 }
-                slowIdx++;
-                fastIdx++;
+                cur++;
+                nextNonZeroIdx++;
             }
         }
     }
