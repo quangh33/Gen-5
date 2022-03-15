@@ -17,6 +17,13 @@ public class TaiVo304RangeSumQuery2DImmutable {
         System.out.println("2, 1, 4, 3 => " + new NumMatrix(numMatrix).sumRegion(2, 1, 4, 3));
         System.out.println("1, 1, 2, 2 => " + new NumMatrix(numMatrix).sumRegion(1, 1, 2, 2));
         System.out.println("1, 2, 2, 4 => " + new NumMatrix(numMatrix).sumRegion(1, 2, 2, 4));
+
+        int[][] numMatrix2 = new int[][]{
+                {-4, -5}
+        };
+        System.out.println("0, 0, 0, 0 => " + new NumMatrix(numMatrix2).sumRegion(0, 0, 0, 0));
+        System.out.println("0, 0, 0, 1 => " + new NumMatrix(numMatrix2).sumRegion(0, 0, 0, 1));
+        System.out.println("0, 1, 0, 1 => " + new NumMatrix(numMatrix2).sumRegion(0, 1, 0, 1));
     }
 
     // Space Complexity: O(n)
@@ -25,9 +32,11 @@ public class TaiVo304RangeSumQuery2DImmutable {
         private final int[][] prefixSums;
 
         public NumMatrix(int[][] matrix) {
-            prefixSums = new int[matrix.length + 1][matrix[0].length + 1];
-            for (int i = 1; i <= matrix.length; i++) {
-                for (int j = 1; j <= matrix.length; j++) {
+            int height = matrix.length;
+            int width = matrix[0].length;
+            prefixSums = new int[height + 1][width + 1];
+            for (int i = 1; i <= height; i++) {
+                for (int j = 1; j <= width; j++) {
                     prefixSums[i][j] = prefixSums[i][j - 1] - prefixSums[i - 1][j - 1] + matrix[i - 1][j - 1] + prefixSums[i - 1][j];
                 }
             }
