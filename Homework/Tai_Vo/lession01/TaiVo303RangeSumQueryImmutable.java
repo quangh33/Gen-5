@@ -15,6 +15,8 @@ public class TaiVo303RangeSumQueryImmutable {
         System.out.println("Sum from 0 -> 5 = " + numArray.sumRange(0, 5));
     }
 
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class NumArray {
         private final int[] prefixSum;
 
@@ -27,8 +29,6 @@ public class TaiVo303RangeSumQueryImmutable {
         }
 
         public int sumRange(int left, int right) {
-            // Space Complexity: O(n)
-            // Time Complexity: O(1)
             if (left == 0) {
                 return prefixSum[right];
             }

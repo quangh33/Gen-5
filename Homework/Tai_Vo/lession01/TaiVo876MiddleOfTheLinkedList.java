@@ -32,10 +32,10 @@ public class TaiVo876MiddleOfTheLinkedList {
         System.out.println("The middle node of the given linked list is: " + middleNode.val);
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public ListNode middleNode(ListNode head) {
-            // Space Complexity: O(1)
-            // Time Complexity: O(n)
             ListNode singleStep = head;
             ListNode doubleStep = head;
 

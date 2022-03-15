@@ -19,6 +19,8 @@ public class TaiVo304RangeSumQuery2DImmutable {
         System.out.println("1, 2, 2, 4 => " + new NumMatrix(numMatrix).sumRegion(1, 2, 2, 4));
     }
 
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class NumMatrix {
         private final int[][] prefixSums;
 
@@ -32,8 +34,6 @@ public class TaiVo304RangeSumQuery2DImmutable {
         }
 
         public int sumRegion(int row1, int col1, int row2, int col2) {
-            // Space Complexity: O(n)
-            // Time Complexity: O(1)
             return prefixSums[row2 + 1][col2 + 1] - prefixSums[row2 + 1][col1] - prefixSums[row1][col2 + 1] + prefixSums[row1][col1];
         }
     }

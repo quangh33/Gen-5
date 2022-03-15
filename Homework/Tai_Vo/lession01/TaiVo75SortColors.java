@@ -18,10 +18,10 @@ public class TaiVo75SortColors {
         System.out.println(Arrays.toString(nums2));
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public void sortColors(int[] nums) {
-            // Space Complexity: O(1)
-            // Time Complexity: O(n)
             int numOfRed = 0;
             int numOfWhite = 0;
             for (int num : nums) {

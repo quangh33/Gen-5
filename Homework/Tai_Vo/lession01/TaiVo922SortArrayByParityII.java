@@ -17,10 +17,10 @@ public class TaiVo922SortArrayByParityII {
         System.out.println(Arrays.toString(new Solution().sortArrayByParityII(new int[]{648, 831, 560, 986, 192, 424, 997, 829, 897, 843})));
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public int[] sortArrayByParityII(int[] nums) {
-            // Space Complexity: O(1)
-            // Time Complexity: O(n)
             int curIdx = 0;
             int nextOppositeTypeIdx = 1;
             while (nextOppositeTypeIdx < nums.length) {

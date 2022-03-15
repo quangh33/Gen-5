@@ -12,10 +12,10 @@ public class TaiVo136SingleNumber {
         System.out.println(singleNum);
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public int singleNumber(int[] nums) {
-            // Space Complexity: O(1)
-            // Time Complexity: O(n)
             int singleNum = 0;
             for (int num : nums) {
                 singleNum ^= num;

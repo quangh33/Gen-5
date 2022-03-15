@@ -14,10 +14,10 @@ public class TaiVo905SortArrayByParity {
         System.out.println(Arrays.toString(new Solution().sortArrayByParity(new int[]{0})));
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public int[] sortArrayByParity(int[] nums) {
-            // Space Complexity: O(1)
-            // Time Complexity: O(n)
             int leftEven = 0;
             int rightOdd = nums.length - 1;
 

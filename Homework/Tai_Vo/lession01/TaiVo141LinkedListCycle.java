@@ -19,6 +19,8 @@ public class TaiVo141LinkedListCycle {
         System.out.println(new Solution().hasCycle(node1));
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public boolean hasCycle(ListNode head) {
             ListNode singleStep = head;

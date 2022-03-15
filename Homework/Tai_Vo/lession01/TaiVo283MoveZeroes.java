@@ -22,10 +22,10 @@ public class TaiVo283MoveZeroes {
         System.out.println(Arrays.toString(nums3));
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public void moveZeroes(int[] nums) {
-            // Space Complexity: O(1)
-            // Time Complexity: O(n)
             int cur = 0;
             int nextNonZeroIdx = 1;
 

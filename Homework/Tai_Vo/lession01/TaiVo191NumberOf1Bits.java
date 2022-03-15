@@ -15,10 +15,10 @@ public class TaiVo191NumberOf1Bits {
         System.out.println(new Solution().hammingWeight(-3));
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(1)
     private static class Solution {
         public int hammingWeight(int n) {
-            // Space Complexity: O(1)
-            // Time Complexity: O(1)
             int count = 0;
             for (int i = 0; i < 32; i++) {
                 boolean isRightMostBit1 = (n | 1) == n;
