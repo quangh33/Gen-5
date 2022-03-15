@@ -2,10 +2,10 @@ namespace HappyNumber
 {
     public static class HappyNumber
     {
-        public static bool IsHappy(int n)
+        public static bool IsHappy(int number)
         {
-            int slowRunner = n;
-            int fastRunner = GetNext(n);
+            int slowRunner = number;
+            int fastRunner = GetNext(number);
             while (fastRunner != 1 && slowRunner != fastRunner)
             {
                 slowRunner = GetNext(slowRunner);
@@ -13,14 +13,14 @@ namespace HappyNumber
             }
             return fastRunner == 1;
         }
-        private static int GetNext(int n)
+        private static int GetNext(int number)
         {
             int totalSum = 0;
-            while (n > 0)
+            while (number > 0)
             {
-                int d = n % 10;
-                n = n / 10;
-                totalSum += d * d;
+                int digit = number % 10;
+                number /= 10;
+                totalSum += digit * digit;
             }
             return totalSum;
         }
