@@ -10,10 +10,11 @@ class Solution:
             curr = next_node        
         return prev
     
-    # def reverseList_recursive(self, head: Optional[ListNode], tail=None) -> Optional[ListNode]:
-    #     next_node = head.next
-    #     head.next=tail
-    #     if next_node is None:
-    #         return head
-    #     else:
-    #         reverseList_recursive(next_node,head)
+    def reverseList_recursive(self, head: Optional[ListNode], tail=None) -> Optional[ListNode]:
+        if head is None:
+            return tail
+        next_node=head.next
+        head.next=tail
+        tail=head
+        head=next_node
+        return self.reverseList_recursive(head,tail)
