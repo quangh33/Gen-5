@@ -4,8 +4,9 @@ class NumArray {
     
     public NumArray(int[] nums) {
         this.sums = new int[nums.length];
-        for(int i = 0; i < nums.length; i++) {
-            sums[i] = i==0 ? nums[i] : nums[i] + sums[i-1];
+        sums[0] = nums[0];
+        for(int i = 1; i < nums.length; i++) {
+            sums[i] = nums[i] + sums[i-1];
         }
     }
     
