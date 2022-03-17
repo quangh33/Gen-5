@@ -24,6 +24,8 @@ public class TaiVo206ReverseLinkedList {
         head.print();
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(n)
     private static class Solution {
         public ListNode reverseList(ListNode head) {
             ListNode prev = null;

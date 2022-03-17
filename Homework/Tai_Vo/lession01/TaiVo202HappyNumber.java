@@ -16,8 +16,8 @@ public class TaiVo202HappyNumber {
         System.out.println(new Solution().isHappy(44));
     }
 
-    // Space Complexity: O(1)
-    // Time Complexity: O(1)
+    // Space Complexity: O(?)
+    // Time Complexity: O(?)
     private static class Solution {
         public boolean isHappy(int n) {
             HashSet<Integer> set = new HashSet<>();
