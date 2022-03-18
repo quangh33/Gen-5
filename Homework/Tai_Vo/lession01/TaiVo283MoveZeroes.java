@@ -9,15 +9,15 @@ import java.util.Arrays;
  */
 public class TaiVo283MoveZeroes {
     public static void main(String[] args) {
-        int[] nums = {0, 1, 0, 3, 12};
-        new Solution().moveZeroes(nums);
-        System.out.println(Arrays.toString(nums));
+//        int[] nums = {0, 1, 0, 3, 12};
+//        new Solution().moveZeroes(nums);
+//        System.out.println(Arrays.toString(nums));
+//
+//        int[] nums2 = {0};
+//        new Solution().moveZeroes(nums2);
+//        System.out.println(Arrays.toString(nums2));
 
-        int[] nums2 = {0};
-        new Solution().moveZeroes(nums2);
-        System.out.println(Arrays.toString(nums2));
-
-        int[] nums3 = {4, 2, 4, 0, 0, 3, 0, 5, 1, 0};
+        int[] nums3 = {1, 0, 2, 3, 8, 0, 4, 5, 6, 0};
         new Solution().moveZeroes(nums3);
         System.out.println(Arrays.toString(nums3));
     }
@@ -29,9 +29,11 @@ public class TaiVo283MoveZeroes {
             int cur = 0;
             int nextNonZeroIdx = 1;
 
-            while (nextNonZeroIdx < nums.length && cur < nums.length) {
+            while (nextNonZeroIdx < nums.length) {
                 if (nums[cur] == 0) {
+                    // Move nextNonZeroIdx to the right
                     while (nextNonZeroIdx < nums.length) {
+                        // Found a non-zero element
                         if (nums[nextNonZeroIdx] != 0) {
                             nums[cur] = nums[nextNonZeroIdx];
                             nums[nextNonZeroIdx] = 0;
