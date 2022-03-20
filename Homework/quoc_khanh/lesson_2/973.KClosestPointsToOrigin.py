@@ -44,4 +44,6 @@ def find(self, nums: List[List[int]], k: int, startIdx: int, endIdx: int):
 
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        pass
+        if k == len(points):
+            return points
+        return find(points, k, 0, len(points) - 1)
