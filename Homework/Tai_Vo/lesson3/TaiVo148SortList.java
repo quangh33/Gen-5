@@ -31,6 +31,8 @@ public class TaiVo148SortList {
         }
     }
 
+    // Space Complexity: O(1)
+    // Time Complexity: O(nlog(n))
     private static class Solution {
         public ListNode sortList(ListNode head) {
             if (head == null || head.next == null) {
@@ -83,7 +85,6 @@ public class TaiVo148SortList {
             }
             return head;
         }
-
 
         private ListNode findMid(ListNode head) {
             ListNode slow = head;
