@@ -9,13 +9,13 @@ import java.util.Arrays;
  */
 public class TaiVo283MoveZeroes {
     public static void main(String[] args) {
-        int[] nums = {0, 1, 0, 3, 12};
-        new Solution().moveZeroes(nums);
-        System.out.println(Arrays.toString(nums));
-
-        int[] nums2 = {0};
-        new Solution().moveZeroes(nums2);
-        System.out.println(Arrays.toString(nums2));
+//        int[] nums = {0, 1, 0, 3, 12};
+//        new Solution().moveZeroes(nums);
+//        System.out.println(Arrays.toString(nums));
+//
+//        int[] nums2 = {0};
+//        new Solution().moveZeroes(nums2);
+//        System.out.println(Arrays.toString(nums2));
 
         int[] nums3 = {1, 0, 2, 3, 8, 0, 4, 5, 6, 0};
         new Solution().moveZeroes(nums3);
