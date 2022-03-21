@@ -11,49 +11,34 @@ public class TaiVo88MergeSortedArray {
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 9, 10, 0, 0, 0};
         int[] nums2 = {2, 5, 6};
-        new Solution().merge(nums1, nums1.length, nums2, nums2.length);
+        int m = 4;
+        int n = 3;
+        new Solution().merge(nums1, m, nums2, n);
         System.out.println(Arrays.toString(nums1));
     }
 
+    // Space Complexity: O(m)
+    // Time Complexity: O(m + n)
     private static class Solution {
         public void merge(int[] nums1, int m, int[] nums2, int n) {
-//            int cur1 = 0;
-//            int cur2 = 0;
-//            int unsortedIdx = 0;
-//
-//            while (cur1 < (m + n) && (cur2 < n || unsortedIdx < n)) {
-//                if (cur1 >= m) {
-//                    if (cur2 < n && nums2[cur2] < nums2[unsortedIdx]) {
-//                        nums1[cur1] = nums2[cur2];
-//                        cur2++;
-//                    } else if (unsortedIdx < n) {
-//                        nums1[cur1] = nums2[unsortedIdx];
-//                        unsortedIdx++;
-//                    }
-//                    cur1++;
-//                    continue;
-//                }
-//                if (nums1[cur1] <= nums2[cur2]) {
-//                    cur1++;
-//                    continue;
-//                }
-//                if (nums1[cur1] > nums2[cur2]) {
-//                    if (nums2[cur2] < nums2[unsortedIdx] || cur2 == unsortedIdx) {
-//                        swap(nums1, cur1, nums2, cur2);
-//                        cur2++;
-//                    } else {
-//                        swap(nums1, cur1, nums2, unsortedIdx);
-//                        unsortedIdx++;
-//                    }
-//                    cur1++;
-//                }
-//            }
-        }
+            int[] nums3 = new int[m];
+            // copy nums1 to nums3
+            System.arraycopy(nums1, 0, nums3, 0, nums3.length);
 
-        private void swap(int[] nums1, int idx1, int[] nums2, int idx2) {
-            int temp = nums1[idx1];
-            nums1[idx1] = nums2[idx2];
-            nums2[idx2] = temp;
+            int cur1 = 0;
+            int cur2 = 0;
+            int cur3 = 0;
+
+            while (cur1 < m + n) {
+                if (cur3 >= m || (cur2 < n && nums2[cur2] < nums3[cur3])) {
+                    nums1[cur1] = nums2[cur2];
+                    cur2++;
+                } else {
+                    nums1[cur1] = nums3[cur3];
+                    cur3++;
+                }
+                cur1++;
+            }
         }
     }
 }
