@@ -10,12 +10,12 @@ public class TaiVo148SortList {
         ListNode node1 = new ListNode(3);
         ListNode node2 = new ListNode(2);
         ListNode node3 = new ListNode(4);
-//        ListNode node4 = new ListNode(4);
-//        ListNode node5 = new ListNode(0);
+        ListNode node4 = new ListNode(4);
+        ListNode node5 = new ListNode(0);
         node1.next = node2;
         node2.next = node3;
-//        node3.next = node4;
-//        node4.next = node5;
+        node3.next = node4;
+        node4.next = node5;
 
         ListNode head = new Solution().sortList(node1);
         System.out.println("After sorted: ");
@@ -62,25 +62,23 @@ public class TaiVo148SortList {
 
         private ListNode merge(ListNode left, ListNode right) {
             ListNode head = left.val <= right.val ? left : right;
-            ListNode leftIter = left;
-            ListNode rightIter = right;
-            while (leftIter != null && rightIter != null) {
-                if (leftIter.val <= rightIter.val) {
-                    if (leftIter.next != null && leftIter.next.val <= rightIter.val) {
-                        leftIter = leftIter.next;
+            while (left != null && right != null) {
+                if (left.val <= right.val) {
+                    if (left.next != null && left.next.val <= right.val) {
+                        left = left.next;
                         continue;
                     }
-                    ListNode nextLeft = leftIter.next;
-                    leftIter.next = rightIter;
-                    leftIter = nextLeft;
+                    ListNode nextLeft = left.next;
+                    left.next = right;
+                    left = nextLeft;
                 } else {
-                    if (rightIter.next != null && rightIter.next.val < leftIter.val) {
-                        rightIter = rightIter.next;
+                    if (right.next != null && right.next.val < left.val) {
+                        right = right.next;
                         continue;
                     }
-                    ListNode nextRight = rightIter.next;
-                    rightIter.next = leftIter;
-                    rightIter = nextRight;
+                    ListNode nextRight = right.next;
+                    right.next = left;
+                    right = nextRight;
                 }
             }
             return head;
