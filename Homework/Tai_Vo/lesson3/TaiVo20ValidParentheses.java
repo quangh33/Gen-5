@@ -7,7 +7,7 @@ import java.util.Stack;
  * @link https://leetcode.com/problems/valid-parentheses/
  * @since 2022/03/22 19:41:40
  */
-public class TaiVO20ValidParentheses {
+public class TaiVo20ValidParentheses {
     public static void main(String[] args) {
         Solution solution = new Solution();
         System.out.println(solution.isValid("()"));
@@ -15,6 +15,8 @@ public class TaiVO20ValidParentheses {
         System.out.println(solution.isValid("(]"));
     }
 
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class Solution {
         public boolean isValid(String s) {
             Stack<Character> stack = new Stack<>();
@@ -23,12 +25,9 @@ public class TaiVO20ValidParentheses {
                 if (isOpenBrackets(bracket)) {
                     stack.push(bracket);
                     continue;
-                } else if (stack.isEmpty()) {
-                    return false;
                 }
 
-                Character peek = stack.peek();
-                if (isPairBrackets(peek, bracket)) {
+                if (!stack.isEmpty() && isPairBrackets(stack.peek(), bracket)) {
                     stack.pop();
                 } else {
                     return false;
