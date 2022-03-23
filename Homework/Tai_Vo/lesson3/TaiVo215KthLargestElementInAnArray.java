@@ -12,7 +12,7 @@ public class TaiVo215KthLargestElementInAnArray {
     }
 
     // Space Complexity: O(1)
-    // Time Complexity: O(nlog(n))
+    // Time Complexity: O(n)
     private static class Solution {
         public int findKthLargest(int[] nums, int k) {
             return quickSelect(nums, 0, nums.length - 1, k);
