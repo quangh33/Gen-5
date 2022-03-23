@@ -34,13 +34,11 @@ def mergeTwoSortedLinkedList(list1: Optional[ListNode], list2: Optional[ListNode
     while pointer1 != None and pointer2 != None:
         if pointer1.val < pointer2.val:
             next = pointer1.next
-            pointer1.next = None
             newTail.next = pointer1
             newTail = newTail.next
             pointer1 = next
         else:
             next = pointer2.next
-            pointer2.next = None
             newTail.next = pointer2
             newTail = newTail.next
             pointer2 = next
