@@ -1,4 +1,4 @@
-package lesson3;
+package lesson03;
 
 /**
  * @author taivt
