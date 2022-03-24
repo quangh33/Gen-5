@@ -5,18 +5,14 @@ class Solution:
         """
         i=m-1
         j=n-1
-        k=len(nums1)-1
-        if len(nums1)==n:
-            nums1[0:n]=nums2[0:n]
-            print(nums1)
         for k in range(len(nums1)-1,-1,-1):
-            if j == -1:
+            if j==-1:
                 break
-            if i<0:
+            if i==-1:
                 nums1[k]=nums2[j]
                 j-=1
             else:
-                if nums2[j]>nums1[i]:
+                if nums1[i]<=nums2[j]:
                     nums1[k]=nums2[j]
                     j-=1
                 else:
