@@ -17,6 +17,8 @@ public class TaiVo346MovingAverageFromDataStream {
         System.out.println(movingAverage.next(5)); // return 6.0 = (10 + 3 + 5) / 3
     }
 
+    // Space Complexity: O(n)
+    // Time Complexity: O(1)
     private static class MovingAverage {
         private final Queue<Integer> queue;
         private final int size;
