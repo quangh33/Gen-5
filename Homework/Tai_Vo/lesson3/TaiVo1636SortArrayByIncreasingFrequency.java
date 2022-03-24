@@ -10,13 +10,13 @@ import java.util.*;
 public class TaiVo1636SortArrayByIncreasingFrequency {
     public static void main(String[] args) {
         Solution solution = new Solution();
-//        System.out.println(Arrays.toString(solution.frequencySort(new int[]{1, 1, 2, 2, 2, 3})));
+        System.out.println(Arrays.toString(solution.frequencySort(new int[]{1, 1, 2, 2, 2, 3})));
         System.out.println(Arrays.toString(solution.frequencySort(new int[]{2, 3, 1, 3, 2})));
-//        System.out.println(Arrays.toString(solution.frequencySort(new int[]{-1, 1, -6, 4, 5, -6, 1, 4, 1})));
+        System.out.println(Arrays.toString(solution.frequencySort(new int[]{-1, 1, -6, 4, 5, -6, 1, 4, 1})));
     }
 
     // Space Complexity: O(n)
-    // Time Complexity: O(n)
+    // Time Complexity: O(nlog(n))
     private static class Solution {
         public int[] frequencySort(int[] nums) {
             Map<Integer, Integer> frequencyMap = new HashMap<>();
