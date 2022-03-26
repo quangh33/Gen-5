@@ -18,10 +18,10 @@ public class KClosetPointsToOrigin {
     }
 
     public static int partition(int[][] array, int start, int end) {
-        int[] random = array[end];
+        int[] pivot = array[end];
         int position = start;
         for (int i = start; i < end; i++) {
-            if (getDistance(array[i]) <= getDistance(random)) {
+            if (getDistance(array[i]) <= getDistance(pivot)) {
                 swap(array,i,position);
                 position++;
             }

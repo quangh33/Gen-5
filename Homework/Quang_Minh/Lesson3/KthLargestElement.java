@@ -15,10 +15,10 @@ public class KthLargestElement {
     }
 
     public static int partition(int[] array, int start, int end) {
-        int random = array[end];
+        int pivot = array[end];
         int position = start;
         for (int i = start; i < end; i++) {
-            if (array[i] < random) {
+            if (array[i] < pivot) {
                 swap(array,i,position);
                 position++;
             }
