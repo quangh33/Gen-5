@@ -13,17 +13,17 @@ def combination(n: int, r: int) -> int:
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
         numOfSubarray = 0
-        modToFrequence = {0: 1} # prefix sum % k ---> frequence
+        modToFrequency = {0: 1} # prefix sum % k ---> frequence
         prefixSum = 0
         for num in nums:
             prefixSum += num
             mod = prefixSum % k
-            if mod in modToFrequence:
-                modToFrequence[mod] += 1
+            if mod in modToFrequency:
+                modToFrequency[mod] += 1
             else:
-                modToFrequence[mod] = 1
+                modToFrequency[mod] = 1
         
-        for mod, frequence in modToFrequence.items():
+        for mod, frequence in modToFrequency.items():
             if frequence > 1:
                 numOfSubarray += combination(frequence, 2)
         return numOfSubarray
