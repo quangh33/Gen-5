@@ -1,8 +1,11 @@
 function partition(nums, low, high) {
+  const pivotIndex = Math.floor(Math.random() * (high - low + 1)) + low;
+  // swap random pivot to the end
+  [nums[pivotIndex], nums[high]] = [nums[high], nums[pivotIndex]];
+
   const pivot = nums[high];
   let j = low - 1;
   for (let i = low; i < high; i++) {
-    // sort by decreasing order
     if (nums[i] > pivot) {
       j++;
       // swap i & j
