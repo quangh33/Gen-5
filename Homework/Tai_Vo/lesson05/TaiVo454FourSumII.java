@@ -15,7 +15,7 @@ public class TaiVo454FourSumII {
         System.out.println(solution.fourSumCount(new int[]{0}, new int[]{0}, new int[]{0}, new int[]{0}));
     }
 
-    // Space Complexity: O(n)
+    // Space Complexity: O(n^2)
     // Time Complexity: O(n^2)
     private static class Solution {
         public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
