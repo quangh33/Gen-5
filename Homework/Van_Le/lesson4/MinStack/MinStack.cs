@@ -2,50 +2,60 @@
 {
     public class MinStack
     {
-        private ListNode head = null;
+        private int currentMin;
+        private Node head, tail;
+        private int NodeCount;
 
         public MinStack()
         {
-
+			currentMin = int.MaxValue;
+            head = new Node();
+            tail = head;
+            NodeCount = 0;
         }
 
-        public void Push(int val)
+        public void Push(int value)
         {
-            if (head == null)
+            NodeCount++;
+            if (value < currentMin)
             {
-                head = new ListNode(val);
+                currentMin = value;
+            }
+            if (NodeCount == 1)
+            {
+                tail.val = value;
+                tail.currentMin = currentMin;
             }
             else
             {
-                var temp = head;
-                head = new ListNode(val);
-                head.next = temp;
+                tail.next = new Node(value, currentMin, tail);
+                tail = tail.next;
             }
         }
 
         public void Pop()
         {
-            head = head.next;
+            NodeCount--;
+            if (NodeCount > 0)
+            {
+                tail = tail.prev;
+                currentMin = tail.currentMin;
+            }
+            else
+            {
+                currentMin = int.MaxValue;
+                tail.currentMin = currentMin;
+            }
         }
 
         public int Top()
         {
-            return head.val;
+            return tail.val;
         }
 
         public int GetMin()
         {
-            var cursor = head;
-            int minValue = int.MaxValue;
-            while (cursor != null)
-            {
-                if (cursor.val < minValue)
-                {
-                    minValue = cursor.val;
-                }
-                cursor = cursor.next;
-            }
-            return minValue;
+            return tail.currentMin;
         }
     }
 }

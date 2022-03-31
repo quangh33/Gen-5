@@ -2,55 +2,35 @@
 
 namespace ProductArrayExceptSelf
 {
-    public static class ProductArrayExceptSelf
+    public class ProductArrayExceptSelf
     {
-        public static int[] ProductExceptSelf(int[] nums)
+        public int[] ProductExceptSelf(int[] nums)
         {
-            var product = 1;
-            var numberOfZeroes = 0;
-            var zeroTraverse = false;
-            int[] result = new int[nums.Length];
+            int length = nums.Length;
+            int [] result = new int[length];
 
-            for (var i = 0; i < nums.Length; i++)
-            {
-                if (nums[i] != 0)
-                {
-                    product *= nums[i];
-                }
-                else
-                {
-                    zeroTraverse = true;
-                    numberOfZeroes++;
-                }
-            }
-
-            if (numberOfZeroes >= 2)
+            if (length == 1)
             {
                 return result;
             }
-            else if (zeroTraverse)
+            int i, temp = 1;
+
+            result[0] = 1;
+
+            for (i = 1; i < length; i++)
             {
-                for (var i = 0; i < nums.Length; i++)
-                {
-                    if (nums[i] == 0)
-                    {
-                        result[i] = product;
-                    }
-                    else
-                    {
-                        result[i] = 0;
-                    }
-                }
-                return result;
+                result[i] = temp;
+                temp *= nums[i];
             }
 
-            for (var i = 0; i < nums.Length; i++)
+            temp = 1;
+
+            for (i = length - 1; i >= 0; i--)
             {
-                if (nums[i] != 0)
-                {
-                    result[i] = product / nums[i];
-                }
+                result[i] *= temp;
+                temp *= nums[i];
             }
+
             return result;
         }
     }
