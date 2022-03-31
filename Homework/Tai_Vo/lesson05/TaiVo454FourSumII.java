@@ -19,30 +19,22 @@ public class TaiVo454FourSumII {
     // Time Complexity: O(n^2)
     private static class Solution {
         public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
-            Map<Integer, Integer> sumFreq1 = calculateSumFrequency(nums1, nums2);
-            Map<Integer, Integer> sumFreq2 = calculateSumFrequency(nums3, nums4);
-
-            int count = 0;
-            for (Map.Entry<Integer, Integer> entry : sumFreq1.entrySet()) {
-                Integer sum1 = entry.getKey();
-                Integer freq = entry.getValue();
-                count += (freq * sumFreq2.getOrDefault(-sum1, 0));
-            }
-            return count;
-        }
-
-        private Map<Integer, Integer> calculateSumFrequency(int[] nums1, int[] nums2) {
-            int length = nums1.length;
-            Map<Integer, Integer> sumFrequency = new HashMap<>();
-            for (int i = 0; i < length; i++) {
-                int num1 = nums1[i];
-                for (int j = 0; j < length; j++) {
-                    int num2 = nums2[j];
+            Map<Integer, Integer> sumFreq1 = new HashMap<>();
+            for (int num1 : nums1) {
+                for (int num2 : nums2) {
                     int sum = num1 + num2;
-                    sumFrequency.put(sum, sumFrequency.getOrDefault(sum, 0) + 1);
+                    sumFreq1.put(sum, sumFreq1.getOrDefault(sum, 0) + 1);
                 }
             }
-            return sumFrequency;
+
+            int count = 0;
+            for (int num3 : nums3) {
+                for (int num4 : nums4) {
+                    int sum = num3 + num4;
+                    count += sumFreq1.getOrDefault(-sum, 0);
+                }
+            }
+            return count;
         }
     }
 }
