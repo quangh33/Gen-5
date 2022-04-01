@@ -1,4 +1,3 @@
-from turtle import width
 from typing import List
 
 WATER = 0
