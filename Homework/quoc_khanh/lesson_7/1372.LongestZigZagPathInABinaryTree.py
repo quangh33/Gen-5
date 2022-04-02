@@ -21,7 +21,7 @@ class Solution:
         rLeftLen, rRightLen, rLongestSoFar = self.find(root.right)
         newLeftLen = lRightLen + 1
         newRightLen = rLeftLen + 1
-        return newLeftLen, newRightLen, max(newLeftLen, newRightLen)
+        return newLeftLen, newRightLen, max(newLeftLen, newRightLen, lLongestSoFar, rLongestSoFar)
         
 
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
