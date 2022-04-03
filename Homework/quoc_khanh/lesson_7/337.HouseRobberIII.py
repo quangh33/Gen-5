@@ -16,10 +16,20 @@ class Solution:
     def robNow(self, current: Optional[TreeNode]):
         if current == None:
             return 0, 0
+
         robLeft, notRobLeft = self.robNow(current.left)
+        # robLeft means to rob the left subtree including the left child
+        # notRobLeft means to rob the left subtree excluding the left child
+
         robRight, notRobRight = self.robNow(current.right)
+
+        # because we rob the current node, so we cannot rob it's direct children
         robCurrent = current.val + notRobLeft + notRobRight
+        
+        # if we don't rob the current node, then we have two choices for each of two children.
+        # we will pick the option that maximizes our benefit.
         notRobCurrent = max(robLeft, notRobLeft) + max(robRight, notRobRight)
+
         return robCurrent, notRobCurrent
 
 def buildBinaryTree(nums: List[int]) -> TreeNode:

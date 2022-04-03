@@ -14,12 +14,12 @@ class Solution:
         self.sumToFreq = Counter()
         self.maxFreq = 0
     
-    def count(self, node: Optional[TreeNode]):
+    def countSubtreeSum(self, node: Optional[TreeNode]):
         if node == None:
             return 0
-        left = self.count(node.left)
-        right = self.count(node.right)
-        currSum = left + right + node.val
+        leftSum = self.countSubtreeSum(node.left)
+        rightSum = self.countSubtreeSum(node.right)
+        currSum = leftSum + rightSum + node.val
         if currSum in self.sumToFreq:
             self.sumToFreq[currSum] += 1
         else:
@@ -28,7 +28,7 @@ class Solution:
         return currSum
 
     def findFrequentTreeSum(self, root: Optional[TreeNode]) -> List[int]:
-        self.count(root)
+        self.countSubtreeSum(root)
         result = []
         for sum, freq in self.sumToFreq.items():
             if freq == self.maxFreq:

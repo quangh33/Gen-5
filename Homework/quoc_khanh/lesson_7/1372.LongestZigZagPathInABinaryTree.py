@@ -12,21 +12,43 @@ class TreeNode:
 class Solution:
     def __init__(self) -> None:
         self.max = 0
-        self.stack = []
 
-    def find(self, root: Optional[TreeNode]):
-        if root == None:
-            return -1, -1, -1
-        lLeftLen, lRightLen, lLongestSoFar = self.find(root.left)
-        rLeftLen, rRightLen, rLongestSoFar = self.find(root.right)
-        newLeftLen = lRightLen + 1
-        newRightLen = rLeftLen + 1
-        return newLeftLen, newRightLen, max(newLeftLen, newRightLen, lLongestSoFar, rLongestSoFar)
+    def find(self, current: Optional[TreeNode]):
+        '''
+            Returns:
+                @left: zigzac length of the subtree including the current node and it's left subtree
+                @right: zigzac elngth of the subtree including the current node and it's right subtree
+        '''
+        if current == None:
+            return -1, -1
+
+        left_leftNode, right_leftNode = self.find(current.left)
+        # right_leftNode: zigzag length of the subtree including current.left,
+        # and all children of current.left.right.
+
+        # left_leftNode: we ignore subtree including current.left and current.left.left,
+        # because it cannot form a zigzag.
+
+        left_rightNode, right_rightNode = self.find(current.right)
+        # right_rightNode: zigzag length of the subtree including current.right,
+        # and all the children of current.right.left
+
+        # right_rightNode: likewise, we ignore subtree including current.right and current.right.right,
+        # because it cannot form a zigzag.
+
+        currentLeft = right_leftNode + 1
+        # from current node, visit left child, visit right node of the left child,...
+
+        currentRight = left_rightNode + 1
+        # from current node, visit right child, visit left node of the right child,...
+
+        self.max = max(currentLeft, currentRight, self.max)
+        return currentLeft, currentRight
         
 
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
-        _, _, longest = self.find(root)
-        return longest
+        self.find(root)
+        return self.max
 
 def buildBinaryTree(nums: List[int]) -> TreeNode:
     nodes = Queue()
@@ -53,8 +75,8 @@ def buildBinaryTree(nums: List[int]) -> TreeNode:
     return root
 
 s = Solution()
-# root = buildBinaryTree([1,1,1,None,1,None,None,1,1,None,1])
-# print(s.longestZigZag(root) == 4)
+root = buildBinaryTree([1,1,1,None,1,None,None,1,1,None,1])
+print(s.longestZigZag(root) == 4)
+s = Solution()
 root = buildBinaryTree([1,None,1,1,1,None,None,1,1,None,1,None,None,None,1,None,1])
-s.stack.append((1, 'ANY'))
 print(s.longestZigZag(root) == 3)

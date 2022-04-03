@@ -11,23 +11,29 @@ class TreeNode:
 
 class Solution:
     def __init__(self) -> None:
-        self.max = 0
+        self.maxDiameter = 0
 
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         if root == None:
             return 0
         if root.left == None and root.right == None:
             return 0
-        self.find(root)
-        return self.max
+        self.findMaxDiameter(root)
+        return self.maxDiameter
 
-    def find(self, root: Optional[TreeNode]) -> int:
+    def findMaxDiameter(self, root: Optional[TreeNode]) -> int:
         if root == None:
-            return 0
-        left = self.find(root.left)
-        right = self.find(root.right)
-        self.max = max(self.max, left + right)
-        return max(left, right) + 1
+            return -1
+        leftSubtreeDiameter = self.findMaxDiameter(root.left)
+        rightSubtreeDiameter = self.findMaxDiameter(root.right)
+
+        # currentDiameter includes current node and it's subtree
+        currentDiameter = leftSubtreeDiameter + rightSubtreeDiameter + 2
+
+        self.maxDiameter = max(self.maxDiameter, currentDiameter)
+
+        # here we try to take just one of the two subtrees for consideration at the parent of this node.
+        return max(leftSubtreeDiameter, rightSubtreeDiameter) + 1
 
 def buildBinaryTree(nums: List[int]) -> TreeNode:
     nodes = Queue()

@@ -12,26 +12,43 @@ class Solution:
     def __init__(self) -> None:
         self.longest = 0
 
-    def count(self, node: Optional[TreeNode]):
+    def findLongestUnivaluePath(self, node: Optional[TreeNode]):
+        '''
+            Returns:
+                @num: int
+                @len: int
+                    @len is length of path that consists only number @num.
+        '''
         if not node:
             return None, 0
-        length = 0
-        leftNumber, leftLen = self.count(node.left)
+        lengthIncludeCurrent = 0
+
+        # calculate length
+        leftNumber, leftLen = self.findLongestUnivaluePath(node.left)
+        rightNumber, rightLen = self.findLongestUnivaluePath(node.right)
+
+        # update length
         if leftNumber == node.val:
-            length += leftLen + 1
-        rightNumber, rightLen = self.count(node.right)
+            lengthIncludeCurrent += leftLen + 1
+
         if rightNumber == node.val:
-            length += rightLen + 1
-        self.longest = max(self.longest, length)
+            lengthIncludeCurrent += rightLen + 1
+
+        # update max length
+        self.longest = max(self.longest, lengthIncludeCurrent)
 
         if leftNumber == node.val and rightNumber == node.val:
+            # if both left child and right child values equal to current value,
+            # then we only take the subtree that has logger length.
             return node.val, max(leftLen, rightLen) + 1
         else:
-            return node.val, length
+            # if only one child or none of them has value equals to current value,
+            # them simply return the length, this length has updated.
+            return node.val, lengthIncludeCurrent
         
 
     def longestUnivaluePath(self, root: Optional[TreeNode]) -> int:
-        self.count(root)
+        self.findLongestUnivaluePath(root)
         return self.longest
         
 def buildBinaryTree(nums: List[int]) -> TreeNode:

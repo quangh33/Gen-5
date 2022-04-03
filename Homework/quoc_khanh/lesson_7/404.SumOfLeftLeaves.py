@@ -10,17 +10,20 @@ class TreeNode:
     def __repr__(self) -> str:
         return self.val
 
+def isLeafNode(node: Optional[TreeNode]) -> bool:
+    return not node.left and not node.right
+
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
-        leftSum = 0
+        leftLeavesSum = 0
         if root == None:
-            return leftSum
+            return leftLeavesSum
         if root.left:
-            leftSum += root.left.val if not root.left.left and not root.left.right else 0
-            leftSum += self.sumOfLeftLeaves(root.left)
+            leftLeavesSum += root.left.val if isLeafNode(root.left) else 0
+            leftLeavesSum += self.sumOfLeftLeaves(root.left)
         if root.right:
-            leftSum += self.sumOfLeftLeaves(root.right)
-        return leftSum
+            leftLeavesSum += self.sumOfLeftLeaves(root.right)
+        return leftLeavesSum
 
 def buildBinaryTree(nums: List[int]) -> TreeNode:
     nodes = Queue()
@@ -47,9 +50,9 @@ def buildBinaryTree(nums: List[int]) -> TreeNode:
     return root
 
 s = Solution()
-# root = buildBinaryTree([3,9,20,None,None,15,7])
-# print(s.sumOfLeftLeaves(root) == 24)
-# root = buildBinaryTree([1])
-# print(s.sumOfLeftLeaves(root) == 0)
+root = buildBinaryTree([3,9,20,None,None,15,7])
+print(s.sumOfLeftLeaves(root) == 24)
+root = buildBinaryTree([1])
+print(s.sumOfLeftLeaves(root) == 0)
 root = buildBinaryTree([1,2,3,4,5])
 print(s.sumOfLeftLeaves(root) == 4)
