@@ -3,18 +3,20 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    if(s.length == 1) return false
-    let res = []
-    for(let i=0;i<s.length;i++) {
-        if(s[i] === '(' || s[i] === '[' || s[i] === '{')
-            res.push(s[i])
-        else {
-            if((s[i] == ')' && res[res.length-1] != '(')
-              ||(s[i] == ']' && res[res.length-1] != '[')
-              ||(s[i] == '}' && res[res.length-1] != '{'))
-                return false
-            res.pop()
-        }
+  let result=[]
+  let map ={
+    ')':'(',
+    ']':'[',
+    '}':'{'
+  }
+  for(let i=0;i<s.length;i++){
+    let item=s[i]
+    if(map[item]===undefined)
+      result.push(item)
+    else{
+      if(map[item]===result[result.length-1])result.pop()
+      else return false
     }
-    return res.length == 0
+  }
+  return (!result.length)
 };
