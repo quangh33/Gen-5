@@ -14,6 +14,9 @@ public class TaiVo841KeysAndRooms {
         System.out.println(solution.canVisitAllRooms(List.of(List.of(1, 3), List.of(3, 0, 1), List.of(2), List.of())));
     }
 
+    // n: nodes, m: edges
+    // Space Complexity: O(n)
+    // Time Complexity: O(n + m)
     private static class Solution {
         public boolean canVisitAllRooms(List<List<Integer>> rooms) {
             boolean[] visited = new boolean[rooms.size()];

@@ -31,6 +31,9 @@ public class TaiVo144BinaryTreePreorderTraversal {
         }
     }
 
+    // n: nodes
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class Solution {
         private final List<Integer> elements = new ArrayList<>();
 
