@@ -14,7 +14,7 @@ public class TaiVo543DiameterOfBinaryTree {
         System.out.println(solution.diameterOfBinaryTree(treeNode));
     }
 
-    public static class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
