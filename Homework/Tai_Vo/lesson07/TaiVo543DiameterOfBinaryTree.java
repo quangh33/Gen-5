@@ -42,23 +42,10 @@ public class TaiVo543DiameterOfBinaryTree {
             if (node == null) {
                 return 0;
             }
-
-            TreeNode left = node.left;
-            TreeNode right = node.right;
-            if (left == null && right == null) {
-                return 0;
-            }
-
-            int maxHeightLeft = 0;
-            if (left != null) {
-                maxHeightLeft = calculateDiameter(left) + 1;
-            }
-            int maxHeightRight = 0;
-            if (right != null) {
-                maxHeightRight = calculateDiameter(right) + 1;
-            }
+            int maxHeightLeft = calculateDiameter(node.left);
+            int maxHeightRight = calculateDiameter(node.right);
             maxDiameter = Math.max(maxDiameter, maxHeightLeft + maxHeightRight);
-            return Math.max(maxHeightLeft, maxHeightRight);
+            return Math.max(maxHeightLeft, maxHeightRight) + 1;
         }
     }
 }
