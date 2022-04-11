@@ -43,7 +43,7 @@ public class TaiVo695MaxAreaOfIsland {
             for (int row = 0; row < height; row++) {
                 for (int col = 0; col < width; col++) {
                     if (grid[row][col] == 1 && visited[row][col] == 0) {
-                        int curArea = bfs(grid, row, col);
+                        int curArea = dfs(grid, row, col);
                         maxArea = Math.max(curArea, maxArea);
                     }
                 }
@@ -52,7 +52,7 @@ public class TaiVo695MaxAreaOfIsland {
             return maxArea;
         }
 
-        private int bfs(int[][] grid, int row, int col) {
+        private int dfs(int[][] grid, int row, int col) {
             visited[row][col] = 1;
             if (grid[row][col] == 0) {
                 return 0;
@@ -63,7 +63,7 @@ public class TaiVo695MaxAreaOfIsland {
                 int nRow = row + dy[i];
                 int nCol = col + dx[i];
                 if (isInbound(nRow, nCol) && grid[nRow][nCol] == 1 && visited[nRow][nCol] == 0) {
-                    count += bfs(grid, nRow, nCol);
+                    count += dfs(grid, nRow, nCol);
                 }
             }
 
