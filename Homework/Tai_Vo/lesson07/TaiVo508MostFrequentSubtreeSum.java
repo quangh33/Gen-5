@@ -34,13 +34,17 @@ public class TaiVo508MostFrequentSubtreeSum {
     // Space Complexity: O(n)
     // Time Complexity: O(n)
     private static class Solution {
-        private final Map<Integer, Integer> treeSumFreq = new HashMap<>();
-        private final List<Integer> treeSumArr = new ArrayList<>();
+        private final Map<Integer, Integer> treeSumFreqMap = new HashMap<>();
         private int mostFreqTreeSum = 0;
 
         public int[] findFrequentTreeSum(TreeNode root) {
             calculateTreeSum(root);
-            return treeSumArr.stream().mapToInt(Integer::intValue).toArray();
+            return treeSumFreqMap.entrySet()
+                    .stream()
+                    .filter(entry -> entry.getValue() == mostFreqTreeSum)
+                    .map(Map.Entry::getKey)
+                    .mapToInt(Integer::intValue)
+                    .toArray();
         }
 
         private Integer calculateTreeSum(TreeNode node) {
@@ -55,15 +59,11 @@ public class TaiVo508MostFrequentSubtreeSum {
             Integer rightSum = calculateTreeSum(node.right);
             treeSum += rightSum != null ? rightSum : 0;
 
-            int treeSumReq = treeSumFreq.getOrDefault(treeSum, 0) + 1;
-            treeSumFreq.put(treeSum, treeSumReq);
+            int treeSumReq = treeSumFreqMap.getOrDefault(treeSum, 0) + 1;
+            treeSumFreqMap.put(treeSum, treeSumReq);
 
             if (treeSumReq > mostFreqTreeSum) {
                 mostFreqTreeSum = treeSumReq;
-                treeSumArr.clear();
-                treeSumArr.add(treeSum);
-            } else if (treeSumReq == mostFreqTreeSum) {
-                treeSumArr.add(treeSum);
             }
 
             return treeSum;
