@@ -31,7 +31,7 @@ public class TaiVo543DiameterOfBinaryTree {
     }
 
     // n: nodes
-    // Space Complexity: O(1)
+    // Space Complexity: O(n)
     // Time Complexity: O(n)
     private static class Solution {
         private int maxDiameter = 0;

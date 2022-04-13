@@ -33,7 +33,7 @@ public class TaiVo404SumOfLeftLeaves {
     }
 
     // n: nodes
-    // Space Complexity: O(1)
+    // Space Complexity: O(n)
     // Time Complexity: O(n)
     private static class Solution {
         public int sumOfLeftLeaves(TreeNode root) {
