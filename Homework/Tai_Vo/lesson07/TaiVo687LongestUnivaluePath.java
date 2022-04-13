@@ -1,5 +1,8 @@
 package lesson07;
 
+import utils.TreeGenerator;
+import utils.TreeGenerator.TreeNode;
+
 /**
  * @author taivt
  * @link https://leetcode.com/problems/longest-univalue-path/
@@ -7,34 +10,9 @@ package lesson07;
  */
 public class TaiVo687LongestUnivaluePath {
     public static void main(String[] args) {
-//        TreeNode left = new TreeNode(4, new TreeNode(1), new TreeNode(1));
-//        TreeNode right = new TreeNode(5, null, new TreeNode(5));
-//        System.out.println(new Solution().longestUnivaluePath(new TreeNode(5, left, right)));
-//
-//        TreeNode left = new TreeNode(4, new TreeNode(4), new TreeNode(4));
-//        TreeNode right = new TreeNode(5, null, new TreeNode(5));
-//        System.out.println(new Solution().longestUnivaluePath(new TreeNode(1, left, right)));
-
-        TreeNode left = new TreeNode(1, new TreeNode(1), new TreeNode(1));
-        TreeNode right = new TreeNode(1, new TreeNode(1), null);
-        TreeNode treeNode = new TreeNode(1, null, new TreeNode(1, left, right));
-        System.out.println(new Solution().longestUnivaluePath(treeNode));
-    }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
+        Solution solution = new Solution();
+        System.out.println(solution.longestUnivaluePath(TreeGenerator.generateBinaryTree(new Integer[]{5, 4, 5, 1, 1, null, 5})));
+        System.out.println(solution.longestUnivaluePath(TreeGenerator.generateBinaryTree(new Integer[]{1, 4, 5, 4, 4, null, 5})));
     }
 
     // n: nodes
@@ -44,17 +22,18 @@ public class TaiVo687LongestUnivaluePath {
         private int longestLength = 0;
 
         public int longestUnivaluePath(TreeNode root) {
-            calPathLength(root);
+            longestLength = 0;
+            calculateUnivalueLength(root);
             return longestLength;
         }
 
-        private int calPathLength(TreeNode node) {
+        private int calculateUnivalueLength(TreeNode node) {
             if (node == null) {
                 return 0;
             }
 
-            int left = calPathLength(node.left);
-            int right = calPathLength(node.right);
+            int left = calculateUnivalueLength(node.left);
+            int right = calculateUnivalueLength(node.right);
 
             int arrowLeft = 0, arrowRight = 0;
             if (node.left != null && node.left.val == node.val) {

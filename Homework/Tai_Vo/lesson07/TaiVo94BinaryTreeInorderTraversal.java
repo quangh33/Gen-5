@@ -1,7 +1,11 @@
 package lesson07;
 
+import utils.TreeGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static utils.TreeGenerator.*;
 
 /**
  * @author taivt
@@ -11,42 +15,31 @@ import java.util.List;
 public class TaiVo94BinaryTreeInorderTraversal {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        TreeNode treeNode = new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
-        System.out.println(solution.inorderTraversal(treeNode));
-    }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
+        System.out.println(solution.inorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{1, null, 2, 3})));
+        System.out.println(solution.inorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{})));
+        System.out.println(solution.inorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{1})));
     }
 
     // n: nodes
     // Space Complexity: O(n)
     // Time Complexity: O(n)
     private static class Solution {
-        private final List<Integer> elements = new ArrayList<>();
+        private List<Integer> elements;
 
         public List<Integer> inorderTraversal(TreeNode root) {
-            if (root == null) {
-                return elements;
+            elements = new ArrayList<>();
+            inorderTraversalRecursive(root);
+            return elements;
+        }
+
+        private void inorderTraversalRecursive(TreeNode node) {
+            if (node == null) {
+                return;
             }
 
-            inorderTraversal(root.left);
-            elements.add(root.val);
-            inorderTraversal(root.right);
-
-            return elements;
+            inorderTraversalRecursive(node.left);
+            elements.add(node.val);
+            inorderTraversalRecursive(node.right);
         }
     }
 }

@@ -1,5 +1,8 @@
 package lesson07;
 
+import utils.TreeGenerator;
+import utils.TreeGenerator.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,42 +14,31 @@ import java.util.List;
 public class TaiVo144BinaryTreePreorderTraversal {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        TreeNode treeNode = new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
-        System.out.println(solution.preorderTraversal(treeNode));
-    }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
+        System.out.println(solution.preorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{1, null, 2, 3})));
+        System.out.println(solution.preorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{})));
+        System.out.println(solution.preorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{1})));
     }
 
     // n: nodes
     // Space Complexity: O(n)
     // Time Complexity: O(n)
     private static class Solution {
-        private final List<Integer> elements = new ArrayList<>();
+        private List<Integer> elements;
 
         public List<Integer> preorderTraversal(TreeNode root) {
-            if (root == null) {
-                return elements;
+            elements = new ArrayList<>();
+            preorderTraversalRecursive(root);
+            return elements;
+        }
+
+        private void preorderTraversalRecursive(TreeNode node) {
+            if (node == null) {
+                return;
             }
 
-            elements.add(root.val);
-            preorderTraversal(root.left);
-            preorderTraversal(root.right);
-
-            return elements;
+            elements.add(node.val);
+            preorderTraversalRecursive(node.left);
+            preorderTraversalRecursive(node.right);
         }
     }
 }

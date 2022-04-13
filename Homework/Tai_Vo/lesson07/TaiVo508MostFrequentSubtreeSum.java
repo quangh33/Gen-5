@@ -1,6 +1,11 @@
 package lesson07;
 
-import java.util.*;
+import utils.TreeGenerator;
+import utils.TreeGenerator.TreeNode;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author taivt
@@ -10,24 +15,8 @@ import java.util.*;
 public class TaiVo508MostFrequentSubtreeSum {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(Arrays.toString(solution.findFrequentTreeSum(new TreeNode(5, new TreeNode(2), new TreeNode(-3)))));
-//        System.out.println(Arrays.toString(solution.findFrequentTreeSum(new TreeNode(5, new TreeNode(2), new TreeNode(-5)))));
-    }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
+        System.out.println(Arrays.toString(solution.findFrequentTreeSum(TreeGenerator.generateBinaryTree(new Integer[]{5, 2, -3}))));
+        System.out.println(Arrays.toString(solution.findFrequentTreeSum(TreeGenerator.generateBinaryTree(new Integer[]{5, 2, -5}))));
     }
 
     // n: nodes

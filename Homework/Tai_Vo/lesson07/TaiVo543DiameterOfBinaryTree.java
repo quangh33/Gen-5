@@ -1,5 +1,8 @@
 package lesson07;
 
+import utils.TreeGenerator;
+import utils.TreeGenerator.TreeNode;
+
 /**
  * @author taivt
  * @link https://leetcode.com/problems/diameter-of-binary-tree/
@@ -9,25 +12,8 @@ public class TaiVo543DiameterOfBinaryTree {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-
-        TreeNode treeNode = new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3));
-        System.out.println(solution.diameterOfBinaryTree(treeNode));
-    }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
+        System.out.println(solution.diameterOfBinaryTree(TreeGenerator.generateBinaryTree(new Integer[]{1, 2, 3, 4, 5})));
+        System.out.println(solution.diameterOfBinaryTree(TreeGenerator.generateBinaryTree(new Integer[]{1, 2})));
     }
 
     // n: nodes
@@ -37,6 +23,7 @@ public class TaiVo543DiameterOfBinaryTree {
         private int maxDiameter = 0;
 
         public int diameterOfBinaryTree(TreeNode node) {
+            maxDiameter = 0;
             calculateDiameter(node);
             return maxDiameter;
         }
