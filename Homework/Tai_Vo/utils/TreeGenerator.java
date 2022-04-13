@@ -8,15 +8,6 @@ import java.util.Queue;
  * @since 2022/04/13 23:20:02
  */
 public class TreeGenerator {
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
 
     public static TreeNode generateBinaryTree(Integer[] nodes) {
         if (nodes.length == 0) {

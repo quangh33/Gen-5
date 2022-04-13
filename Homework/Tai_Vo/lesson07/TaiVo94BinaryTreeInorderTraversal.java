@@ -1,11 +1,10 @@
 package lesson07;
 
 import utils.TreeGenerator;
+import utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static utils.TreeGenerator.*;
 
 /**
  * @author taivt

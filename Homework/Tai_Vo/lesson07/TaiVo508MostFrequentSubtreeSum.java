@@ -1,7 +1,7 @@
 package lesson07;
 
 import utils.TreeGenerator;
-import utils.TreeGenerator.TreeNode;
+import utils.TreeNode;
 
 import java.util.Arrays;
 import java.util.HashMap;
