@@ -1,7 +1,8 @@
 package lesson07;
 
-import utils.TreeBuilder;
 import utils.TreeNode;
+
+import static utils.TreeBuilder.buildBinaryTree;
 
 /**
  * @author taivt
@@ -11,8 +12,8 @@ import utils.TreeNode;
 public class TaiVo1372LongestZigZagPathInABinaryTree {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.longestZigZag(TreeBuilder.buildBinaryTree(1, null, 1, 1, 1, null, null, 1, 1, null, 1, null, null, null, 1, null, 1)));
-        System.out.println(solution.longestZigZag(TreeBuilder.buildBinaryTree(1, 1, 1, null, 1, null, null, 1, 1, null, 1)));
+        System.out.println(solution.longestZigZag(buildBinaryTree(1, null, 1, 1, 1, null, null, 1, 1, null, 1, null, null, null, 1, null, 1)));
+        System.out.println(solution.longestZigZag(buildBinaryTree(1, 1, 1, null, 1, null, null, 1, 1, null, 1)));
     }
 
     // n: nodes

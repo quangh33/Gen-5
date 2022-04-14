@@ -1,10 +1,11 @@
 package lesson07;
 
-import utils.TreeBuilder;
 import utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static utils.TreeBuilder.buildBinaryTree;
 
 /**
  * @author taivt
@@ -14,9 +15,9 @@ import java.util.List;
 public class TaiVo144BinaryTreePreorderTraversal {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.preorderTraversal(TreeBuilder.buildBinaryTree(1, null, 2, 3)));
-        System.out.println(solution.preorderTraversal(TreeBuilder.buildBinaryTree()));
-        System.out.println(solution.preorderTraversal(TreeBuilder.buildBinaryTree(1)));
+        System.out.println(solution.preorderTraversal(buildBinaryTree(1, null, 2, 3)));
+        System.out.println(solution.preorderTraversal(buildBinaryTree()));
+        System.out.println(solution.preorderTraversal(buildBinaryTree(1)));
     }
 
     // n: nodes

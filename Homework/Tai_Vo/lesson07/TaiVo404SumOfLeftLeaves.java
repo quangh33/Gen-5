@@ -1,7 +1,8 @@
 package lesson07;
 
-import utils.TreeBuilder;
 import utils.TreeNode;
+
+import static utils.TreeBuilder.buildBinaryTree;
 
 /**
  * @author taivt
@@ -12,8 +13,8 @@ public class TaiVo404SumOfLeftLeaves {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.sumOfLeftLeaves(TreeBuilder.buildBinaryTree(3, 9, 20, null, null, 15, 7)));
-        System.out.println(solution.sumOfLeftLeaves(TreeBuilder.buildBinaryTree(1)));
+        System.out.println(solution.sumOfLeftLeaves(buildBinaryTree(3, 9, 20, null, null, 15, 7)));
+        System.out.println(solution.sumOfLeftLeaves(buildBinaryTree(1)));
     }
 
     // n: nodes

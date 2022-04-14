@@ -1,7 +1,8 @@
 package lesson07;
 
-import utils.TreeBuilder;
 import utils.TreeNode;
+
+import static utils.TreeBuilder.buildBinaryTree;
 
 /**
  * @author taivt
@@ -11,8 +12,8 @@ import utils.TreeNode;
 public class TaiVo687LongestUnivaluePath {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.longestUnivaluePath(TreeBuilder.buildBinaryTree(5, 4, 5, 1, 1, null, 5)));
-        System.out.println(solution.longestUnivaluePath(TreeBuilder.buildBinaryTree(1, 4, 5, 4, 4, null, 5)));
+        System.out.println(solution.longestUnivaluePath(buildBinaryTree(5, 4, 5, 1, 1, null, 5)));
+        System.out.println(solution.longestUnivaluePath(buildBinaryTree(1, 4, 5, 4, 4, null, 5)));
     }
 
     // n: nodes

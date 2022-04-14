@@ -1,7 +1,8 @@
 package lesson07;
 
-import utils.TreeBuilder;
 import utils.TreeNode;
+
+import static utils.TreeBuilder.buildBinaryTree;
 
 /**
  * @author taivt
@@ -12,8 +13,8 @@ public class TaiVo543DiameterOfBinaryTree {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.diameterOfBinaryTree(TreeBuilder.buildBinaryTree(1, 2, 3, 4, 5)));
-        System.out.println(solution.diameterOfBinaryTree(TreeBuilder.buildBinaryTree(1, 2)));
+        System.out.println(solution.diameterOfBinaryTree(buildBinaryTree(1, 2, 3, 4, 5)));
+        System.out.println(solution.diameterOfBinaryTree(buildBinaryTree(1, 2)));
     }
 
     // n: nodes

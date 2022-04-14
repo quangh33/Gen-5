@@ -15,6 +15,9 @@ public class TaiVo513FindBottomLeftTreeValue {
         System.out.println(solution.findBottomLeftValue(TreeBuilder.buildBinaryTree(1, 2, 3, 4, null, 5, 6, null, null, 7)));
     }
 
+    // n: nodes
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class Solution {
         private int leftmost;
         private int curLevel;

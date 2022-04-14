@@ -1,7 +1,8 @@
 package lesson07;
 
-import utils.TreeBuilder;
 import utils.TreeNode;
+
+import static utils.TreeBuilder.buildBinaryTree;
 
 /**
  * @author taivt
@@ -12,9 +13,9 @@ public class TaiVo337HouseRobberIII {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.rob(TreeBuilder.buildBinaryTree(3, 2, 3, null, 3, null, 1)));
-        System.out.println(solution.rob(TreeBuilder.buildBinaryTree(3, 4, 5, 1, 3, null, 1)));
-        System.out.println(solution.rob(TreeBuilder.buildBinaryTree(3, 2, 20, 1, 5, null, 4)));
+        System.out.println(solution.rob(buildBinaryTree(3, 2, 3, null, 3, null, 1)));
+        System.out.println(solution.rob(buildBinaryTree(3, 4, 5, 1, 3, null, 1)));
+        System.out.println(solution.rob(buildBinaryTree(3, 2, 20, 1, 5, null, 4)));
     }
 
     // n: nodes
