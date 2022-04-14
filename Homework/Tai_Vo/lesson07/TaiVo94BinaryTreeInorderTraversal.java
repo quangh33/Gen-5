@@ -1,6 +1,6 @@
 package lesson07;
 
-import utils.TreeGenerator;
+import utils.TreeBuilder;
 import utils.TreeNode;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import java.util.List;
 public class TaiVo94BinaryTreeInorderTraversal {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.inorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{1, null, 2, 3})));
-        System.out.println(solution.inorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{})));
-        System.out.println(solution.inorderTraversal(TreeGenerator.generateBinaryTree(new Integer[]{1})));
+        System.out.println(solution.inorderTraversal(TreeBuilder.buildBinaryTree(1, null, 2, 3)));
+        System.out.println(solution.inorderTraversal(TreeBuilder.buildBinaryTree()));
+        System.out.println(solution.inorderTraversal(TreeBuilder.buildBinaryTree(1)));
     }
 
     // n: nodes

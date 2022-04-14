@@ -7,9 +7,9 @@ import java.util.Queue;
  * @author taivt
  * @since 2022/04/13 23:20:02
  */
-public class TreeGenerator {
+public class TreeBuilder {
 
-    public static TreeNode generateBinaryTree(Integer[] nodes) {
+    public static TreeNode buildBinaryTree(Integer... nodes) {
         if (nodes.length == 0) {
             return null;
         }
