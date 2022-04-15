@@ -1,4 +1,4 @@
-package lesson07;
+package lesson08;
 
 import utils.TreeNode;
 
@@ -19,6 +19,9 @@ public class TaiVo107BinaryTreeLevelOrderTraversalII {
         System.out.println(solution.levelOrderBottom(buildBinaryTree()));
     }
 
+    // n: nodes
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class Solution {
         public List<List<Integer>> levelOrderBottom(TreeNode root) {
             if (root == null) {
