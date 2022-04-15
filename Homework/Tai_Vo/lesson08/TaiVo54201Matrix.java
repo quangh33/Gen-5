@@ -16,6 +16,9 @@ public class TaiVo54201Matrix {
         System.out.println(Arrays.deepToString(solution.updateMatrix(new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}})));
     }
 
+    // n: number of cells
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class Solution {
         private final int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
         private int rows;
