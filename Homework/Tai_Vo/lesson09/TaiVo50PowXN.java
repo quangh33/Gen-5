@@ -14,6 +14,8 @@ public class TaiVo50PowXN {
         System.out.println(solution.myPow(2, -2147483648));
     }
 
+    // Space Complexity: O(log(n))
+    // Time Complexity: O(log(n))
     private static class Solution {
         public double myPow(double x, int n) {
             if (n < 0) {
