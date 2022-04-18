@@ -10,7 +10,6 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-// Pre-Order: root -> left -> right
 var inorderTraversal = function(root) {
     // Recursive solution
     // const out = []
