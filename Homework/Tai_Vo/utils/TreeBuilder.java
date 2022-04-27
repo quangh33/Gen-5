@@ -1,6 +1,8 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -38,5 +40,31 @@ public class TreeBuilder {
         }
 
         return root;
+    }
+
+    public static List<Integer> toArray(TreeNode node) {
+        List<Integer> array = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            List<Integer> curLevelArray = new ArrayList<>();
+            boolean isAllNull = true;
+            int levelLength = queue.size();
+            for (int i = 0; i < levelLength; i++) {
+                TreeNode cur = queue.poll();
+                if (cur == null) {
+                    curLevelArray.add(null);
+                    continue;
+                }
+                isAllNull = false;
+                curLevelArray.add(cur.val);
+                queue.add(cur.left);
+                queue.add(cur.right);
+            }
+            if (!isAllNull) {
+                array.addAll(curLevelArray);
+            }
+        }
+        return array;
     }
 }
