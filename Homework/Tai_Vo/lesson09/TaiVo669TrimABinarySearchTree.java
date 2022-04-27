@@ -19,6 +19,8 @@ public class TaiVo669TrimABinarySearchTree {
         System.out.println(toArray(newTree2));
     }
 
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
     private static class Solution {
         public TreeNode trimBST(TreeNode root, int low, int high) {
             if (root == null) {
