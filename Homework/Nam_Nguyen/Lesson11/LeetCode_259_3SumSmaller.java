@@ -14,11 +14,7 @@ public class LeetCode_259_3SumSmaller {
             int k = target - nums[i];
             while(left < right) {
                 if(nums[left] + nums[right] < k) {
-                    int pointer = right;
-                    while(left < pointer) {
-                        res++;
-                        pointer--;
-                    }
+                    res+=(right - left);
                     left++;
                 }else {
                     right--;
