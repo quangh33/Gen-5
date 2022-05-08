@@ -22,20 +22,18 @@ public class TaiVo1167MinimumCostToConnectSticks {
         public int connectSticks(int[] sticks) {
             PriorityQueue<Integer> minHeap = new PriorityQueue<>();
             for (int stick : sticks) {
-                minHeap.add(stick);
+                minHeap.offer(stick);
             }
 
-            int cost = 0;
+            int totalCost = 0;
             while (minHeap.size() > 1) {
                 Integer curCost = minHeap.poll();
-                if (!minHeap.isEmpty()) {
-                    curCost += minHeap.poll();
-                }
-                minHeap.add(curCost);
-                cost += curCost;
+                curCost += minHeap.poll();
+                minHeap.offer(curCost);
+                totalCost += curCost;
             }
 
-            return cost;
+            return totalCost;
         }
     }
 }
