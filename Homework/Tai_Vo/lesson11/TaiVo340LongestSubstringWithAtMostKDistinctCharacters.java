@@ -5,24 +5,26 @@ import java.util.Map;
 
 /**
  * @author taivt
- * @link https://leetcode.com/problems/longest-substring-without-repeating-characters/
- * @since 2022/05/08 19:49:53
+ * @link https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+ * @since 2022/05/08 23:07:13
  */
-public class TaiVo3LongestSubstringWithoutRepeatingCharacters {
+public class TaiVo340LongestSubstringWithAtMostKDistinctCharacters {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(solution.lengthOfLongestSubstring("bbbbb"));
-        System.out.println(solution.lengthOfLongestSubstring("pwwkew"));
-        System.out.println(solution.lengthOfLongestSubstring(""));
-        System.out.println(solution.lengthOfLongestSubstring("1"));
+        System.out.println(solution.lengthOfLongestSubstringKDistinct("eceba", 2));
+        System.out.println(solution.lengthOfLongestSubstringKDistinct("aa", 1));
+        System.out.println(solution.lengthOfLongestSubstringKDistinct("a", 0));
+        System.out.println(solution.lengthOfLongestSubstringKDistinct("", 1));
     }
 
     // Space Complexity: O(n)
     // Time Complexity: O(n)
     private static class Solution {
-        public int lengthOfLongestSubstring(String s) {
+        public int lengthOfLongestSubstringKDistinct(String s, int k) {
+            if (k == 0) {
+                return 0;
+            }
             int n = s.length();
             Map<Character, Integer> freq = new HashMap<>();
             int res = 0;
@@ -30,8 +32,8 @@ public class TaiVo3LongestSubstringWithoutRepeatingCharacters {
 
             while (r < n) {
                 char charAtR = s.charAt(r);
-                int freqOfR = freq.getOrDefault(charAtR, 0);
-                if (freqOfR < 1) {
+                if (freq.containsKey(charAtR) || freq.size() < k) {
+                    int freqOfR = freq.getOrDefault(charAtR, 0);
                     freq.put(charAtR, freqOfR + 1);
                     res = Math.max(res, r - l + 1);
                     r++;
@@ -39,6 +41,7 @@ public class TaiVo3LongestSubstringWithoutRepeatingCharacters {
                     char charAtL = s.charAt(l);
                     int freqOfL = freq.getOrDefault(charAtL, 0);
                     freq.put(charAtL, freqOfL - 1);
+                    freq.remove(charAtL, 0);    // remove if the frequency of L is 0
                     l++;
                 }
             }
