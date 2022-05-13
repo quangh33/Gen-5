@@ -17,9 +17,8 @@ public class TaiVo743NetworkDelayTime {
 
     // n: nodes, m: edges
     // Space Complexity: O(n + m)
-    // Time Complexity: O(n)
+    // Time Complexity: O(m * log(n))
     private static class Solution {
-        private static final int INF = -1;
 
         public int networkDelayTime(int[][] times, int n, int k) {
             //  source       dest     weight
@@ -33,24 +32,28 @@ public class TaiVo743NetworkDelayTime {
             }
 
             int[] distances = new int[n + 1];
-            Arrays.fill(distances, INF);
-            PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+            Arrays.fill(distances, Integer.MAX_VALUE);
+            PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(pair -> pair[0]));
 
             // start from k
             distances[k] = 0;
-            minHeap.offer(k);
+            //          distanceSoFar, src
+            minHeap.offer(new int[]{0, k});
 
             while (!minHeap.isEmpty()) {
-                Integer u = minHeap.poll();
+                int[] pair = minHeap.poll();
+                int distanceSoFar = pair[0];
+                int u = pair[1];
+
                 Map<Integer, Integer> neighbours = adj.getOrDefault(u, Collections.emptyMap());
                 for (Map.Entry<Integer, Integer> entry : neighbours.entrySet()) {
                     Integer v = entry.getKey();
                     Integer w = entry.getValue();
                     int distanceAtV = distances[v];
-                    int newWeightToV = distances[u] + w;
-                    if (distanceAtV == INF || newWeightToV < distanceAtV) {
-                        distances[v] = newWeightToV;
-                        minHeap.offer(v);
+                    int newDistanceToV = distanceSoFar + w;
+                    if (newDistanceToV < distanceAtV) {
+                        distances[v] = newDistanceToV;
+                        minHeap.offer(new int[]{newDistanceToV, v});
                     }
                 }
             }
