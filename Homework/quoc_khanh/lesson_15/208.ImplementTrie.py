@@ -1,5 +1,3 @@
-EMPTY = ''
-
 class TrieNode:
     def __init__(self) -> None:
         self.endAt = [False] * 26
