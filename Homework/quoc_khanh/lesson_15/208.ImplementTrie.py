@@ -1,7 +1,7 @@
 class TrieNode:
     def __init__(self) -> None:
         self.endAt = [False] * 26
-        self.posts = [None] * 26
+        self.letters = [None] * 26
 
 class Trie:
     def __init__(self):
@@ -13,11 +13,11 @@ class Trie:
         length = len(word)
         for letterIdx, letter in enumerate(word):
             index = ord(letter) - 97
-            if currNode.posts[index] == None:
-                currNode.posts[index] = TrieNode()
+            if currNode.letters[index] == None:
+                currNode.letters[index] = TrieNode()
             if letterIdx == length - 1:
                 currNode.endAt[index] = True
-            currNode = currNode.posts[index]
+            currNode = currNode.letters[index]
 
     def search(self, word: str) -> bool:
         currNode = self.root
@@ -25,11 +25,11 @@ class Trie:
         length = len(word)
         for letterIdx, letter in enumerate(word):
             index = ord(letter) - 97
-            if currNode.posts[index] == None:
+            if currNode.letters[index] == None:
                 return False
             if letterIdx == length - 1:
                 break
-            currNode = currNode.posts[index]
+            currNode = currNode.letters[index]
         return currNode.endAt[index]
 
 
@@ -37,9 +37,9 @@ class Trie:
         currNode = self.root
         for letter in prefix:
             index = ord(letter) - 97
-            if currNode.posts[index] == None:
+            if currNode.letters[index] == None:
                 return False
-            currNode = currNode.posts[index]
+            currNode = currNode.letters[index]
         return True
         
 
