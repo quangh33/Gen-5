@@ -17,37 +17,44 @@ public class TaiVo1101TheEarliestMomentWhenEveryoneBecomeFriends {
         System.out.println(solution.earliestAcq(new int[][]{{9, 3, 0}, {0, 2, 1}, {8, 0, 1}, {1, 3, 2}, {2, 2, 0}, {3, 3, 1}}, 4));
     }
 
+    // n: logs.length
+    // Space Complexity: O(n)
+    // Time Complexity: O(nlog(n))
     private static class Solution {
 
         private static class DisjointSet {
             private final int[] parent;
-            private int nOfNodes;
+            private int nodes;
 
-            private DisjointSet(int nOfNodes) {
-                parent = new int[nOfNodes];
+            private DisjointSet(int nodes) {
+                parent = new int[nodes];
                 for (int i = 0; i < parent.length; i++) {
                     parent[i] = i;
                 }
-                this.nOfNodes = nOfNodes;
+                this.nodes = nodes;
             }
 
-            private int find(int x) {
+            public int find(int x) {
                 if (x == parent[x]) {
                     return x;
                 }
                 return parent[x] = find(parent[x]);
             }
 
-            private int union(int u, int v) {
+            public boolean union(int u, int v) {
                 int rootU = find(u);
                 int rootV = find(v);
                 if (rootU == rootV) {
-                    return nOfNodes;
+                    return false;
                 } else {
                     parent[rootU] = rootV;
+                    nodes--;
+                    return true;
                 }
+            }
 
-                return --nOfNodes;
+            public int getNodes() {
+                return nodes;
             }
         }
 
@@ -58,8 +65,8 @@ public class TaiVo1101TheEarliestMomentWhenEveryoneBecomeFriends {
                 int timestamp = log[0];
                 int x = log[1];
                 int y = log[2];
-                int nOfNodes = disjointSet.union(x, y);
-                if (nOfNodes == 1) {
+                disjointSet.union(x, y);
+                if (disjointSet.getNodes() == 1) {
                     return timestamp;
                 }
             }
