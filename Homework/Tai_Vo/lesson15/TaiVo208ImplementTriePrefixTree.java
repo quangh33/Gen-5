@@ -38,31 +38,24 @@ public class TaiVo208ImplementTriePrefixTree {
         }
 
         public boolean search(String word) {
-            Trie iter = this;
-            for (int i = 0; i < word.length(); i++) {
-                char c = word.charAt(i);
-                iter = iter.children.get(c);
-                if (iter == null) {
-                    return false;
-                }
-
-                if (i == word.length() - 1 && iter.ended) {
-                    return true;
-                }
-            }
-            return false;
+            Trie node = searchPrefix(word);
+            return node != null && node.ended;
         }
 
         public boolean startsWith(String prefix) {
+            return searchPrefix(prefix) != null;
+        }
+
+        private Trie searchPrefix(String prefix) {
             Trie iter = this;
             for (int i = 0; i < prefix.length(); i++) {
                 char c = prefix.charAt(i);
                 iter = iter.children.get(c);
                 if (iter == null) {
-                    return false;
+                    return null;
                 }
             }
-            return true;
+            return iter;
         }
     }
 }
