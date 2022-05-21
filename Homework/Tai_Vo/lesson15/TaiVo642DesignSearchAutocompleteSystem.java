@@ -89,10 +89,10 @@ public class TaiVo642DesignSearchAutocompleteSystem {
 
             Comparator<String> comparator = Comparator.comparing(suggestion -> -frequency.get(suggestion));   // Compare by rank
             comparator = comparator.thenComparing(suggestion -> suggestion);    // compare by ASCII-code
-
-            List<String> suggestions = rankTrie.suggestions.stream().sorted(comparator).collect(Collectors.toList());
-            int toIndex = Math.min(suggestions.size(), 3);
-            return suggestions.subList(0, toIndex);
+            return rankTrie.suggestions.stream()
+                    .sorted(comparator)
+                    .limit(3)
+                    .collect(Collectors.toList());
         }
     }
 }
