@@ -39,7 +39,7 @@ public class TaiVo952LargestComponentSizeByCommonFactor {
                 if (rootU == rootV) {
                     return false;
                 } else {
-                    parent.put(rootU, rootV);   // hang rootU under rootV
+                    parent.put(rootU, rootV);
                     return true;
                 }
             }

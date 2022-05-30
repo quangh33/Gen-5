@@ -1,7 +1,6 @@
 package lesson15;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * @author taivt
@@ -23,22 +22,21 @@ public class TaiVo1101TheEarliestMomentWhenEveryoneBecomeFriends {
     private static class Solution {
 
         private static class DisjointSet {
-            private final int[] parent;
-            private int nodes;
+            private final Map<Integer, Integer> parent = new HashMap<>();
+            private int rootCount;
 
-            private DisjointSet(int nodes) {
-                parent = new int[nodes];
-                for (int i = 0; i < parent.length; i++) {
-                    parent[i] = i;
-                }
-                this.nodes = nodes;
+            public DisjointSet(int rootCount) {
+                this.rootCount = rootCount;
             }
 
             public int find(int x) {
-                if (x == parent[x]) {
+                Integer rootX = parent.getOrDefault(x, x);
+                if (x == rootX) {
                     return x;
                 }
-                return parent[x] = find(parent[x]);
+                rootX = find(rootX);
+                parent.put(x, rootX);
+                return rootX;
             }
 
             public boolean union(int u, int v) {
@@ -47,14 +45,14 @@ public class TaiVo1101TheEarliestMomentWhenEveryoneBecomeFriends {
                 if (rootU == rootV) {
                     return false;
                 } else {
-                    parent[rootU] = rootV;
-                    nodes--;
+                    parent.put(rootU, rootV);
+                    rootCount--;
                     return true;
                 }
             }
 
-            public int getNodes() {
-                return nodes;
+            public int getRootCount() {
+                return rootCount;
             }
         }
 
@@ -66,7 +64,7 @@ public class TaiVo1101TheEarliestMomentWhenEveryoneBecomeFriends {
                 int x = log[1];
                 int y = log[2];
                 disjointSet.union(x, y);
-                if (disjointSet.getNodes() == 1) {
+                if (disjointSet.getRootCount() == 1) {
                     return timestamp;
                 }
             }
