@@ -18,26 +18,22 @@ public class TaiVo300LongestIncreasingSubsequence {
     // Time Complexity: O(n ^ 2)
     private static class Solution {
         public int lengthOfLIS(int[] nums) {
+            int lis = 1;
             int n = nums.length;
             int[] f = new int[n]; // f[i] is the longest increasing subsequence that ended at i
             f[0] = 1;
             for (int i = 1; i < n; i++) {
-                int maxCount = 0;
+                int count = 0;
                 for (int j = i - 1; j >= 0; j--) {
                     if (nums[j] < nums[i]) {
-                        maxCount = Math.max(maxCount, f[j]);
+                        count = Math.max(count, f[j]);
                     }
                 }
-                f[i] = maxCount + 1;
+                f[i] = count + 1;
+                lis = Math.max(lis, f[i]);
             }
 
-            int longest = 0;
-            for (int i : f) {
-                if (i > longest) {
-                    longest = Math.max(longest, i);
-                }
-            }
-            return longest;
+            return lis;
         }
     }
 }
