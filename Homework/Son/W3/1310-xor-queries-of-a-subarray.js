@@ -1,0 +1,1 @@
+const xorQueries = ( a, q, h = 0 ) => ( x => q.map( ([ l, r ]) => x[r] ^ x[l-1] ) )( a.map( x => h ^= x ) )
