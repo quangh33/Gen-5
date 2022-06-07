@@ -31,45 +31,40 @@ public class TaiVo1143LongestCommonSubsequence {
             this.t = t;
             n = s.length();
             m = t.length();
-            dp = new int[n][m]; // dp[i][j] the len of the longest common sequence when considering s[0...i] vs t[0...j]
+            dp = new int[n + 1][m + 1]; // dp[i][j] the len of the longest common sequence when considering s[0...i] vs t[0...j]
 
             for (int[] arr : dp) {
                 Arrays.fill(arr, -1);
             }
-            return recursive(n - 1, m - 1);
+            return recursive(n, m);
+//            return iterative();
         }
 
         private int iterative() {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    dp[i][j] = Math.max(dpValue(i - 1, j), dpValue(i, j - 1));
-                    if (s.charAt(i) == t.charAt(j)) {
-                        dp[i][j] = Math.max(dp[i][j], dpValue(i - 1, j - 1) + 1);
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                    if (s.charAt(i - 1) == t.charAt(j - 1)) {
+                        dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - 1] + 1);
                     }
                 }
             }
-            return dp[n - 1][m - 1];
+            return dp[n][m];
         }
 
         private int recursive(int i, int j) {
-            if (i < 0 || j < 0) {
+            if (i == 0 || j == 0) {
                 return 0;
             }
             if (dp[i][j] != -1) {
                 return dp[i][j];
             }
             dp[i][j] = Math.max(recursive(i - 1, j), recursive(i, j - 1));
-            if (s.charAt(i) == t.charAt(j)) {
+            if (s.charAt(i - 1) == t.charAt(j - 1)) {
                 dp[i][j] = Math.max(dp[i][j], recursive(i - 1, j - 1) + 1);
             }
             return dp[i][j];
         }
 
-        private int dpValue(int i, int j) {
-            if (i < 0 || i >= dp.length || j < 0 || j >= dp[0].length) {
-                return 0;
-            }
-            return dp[i][j];
-        }
     }
 }
