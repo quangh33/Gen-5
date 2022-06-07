@@ -17,7 +17,7 @@ public class TaiVo746MinCostClimbingStairs {
     // Space Complexity: O(1)
     // Time Complexity: O(n)
     private static class Solution {
-        private int[] f;
+        private int[] dp;
         private int[] cost;
 
         public int minCostClimbingStairs(int[] cost) {
@@ -41,13 +41,13 @@ public class TaiVo746MinCostClimbingStairs {
                 return cost[n];
             }
 
-            if (f[n] != -1) {
-                return f[n];
+            if (dp[n] != -1) {
+                return dp[n];
             }
 
             int i1 = recursive(n - 1);
             int i2 = recursive(n - 2);
-            return f[n] = Math.min(i1, i2) + cost[n];
+            return dp[n] = Math.min(i1, i2) + cost[n];
         }
     }
 }

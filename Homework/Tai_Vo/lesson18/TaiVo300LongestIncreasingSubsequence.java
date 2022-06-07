@@ -20,17 +20,17 @@ public class TaiVo300LongestIncreasingSubsequence {
         public int lengthOfLIS(int[] nums) {
             int lis = 1;
             int n = nums.length;
-            int[] f = new int[n]; // f[i] is the longest increasing subsequence that ended at i
-            f[0] = 1;
+            int[] dp = new int[n]; // dp[i] is the longest increasing subsequence that ended at i
+            dp[0] = 1;
             for (int i = 1; i < n; i++) {
                 int count = 0;
                 for (int j = i - 1; j >= 0; j--) {
                     if (nums[j] < nums[i]) {
-                        count = Math.max(count, f[j]);
+                        count = Math.max(count, dp[j]);
                     }
                 }
-                f[i] = count + 1;
-                lis = Math.max(lis, f[i]);
+                dp[i] = count + 1;
+                lis = Math.max(lis, dp[i]);
             }
 
             return lis;
